@@ -3,6 +3,21 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+}
+
+body{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
+                  rgba(0, 0, 0, 0.5)), 
+                  url('fundo.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+button {
+  background-color: #12474c;
+  color:white;
 }
 
 .logo {
