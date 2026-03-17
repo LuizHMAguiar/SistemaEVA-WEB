@@ -5,15 +5,21 @@ export function FormularioLogin(){
     return(
         <div className="formulario">
         <img src={Logo} className="Logo"></img>
-        <h1>Sistema-EVA</h1>
+        
         <form>
-            <div>
-            <input placeholder='Digite CPF ou E-mail'>
-            </input>
+            <div className='campo_formulario'>
+            <label>
+                <div>Digite o CPF</div>
+                <input placeholder='000.111.222-33'>
+                </input>
+            </label>
             </div>
-            <div>
-            <input placeholder='Digite sua senha' type='password'>
-            </input>
+            <div className='campo_formulario'>
+            <label>
+                <div>Digite a senha</div>
+                <input placeholder='••••••••••••' type='password'>
+                </input>
+            </label>
             </div>
         </form>
             <button >

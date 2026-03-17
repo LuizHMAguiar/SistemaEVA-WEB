@@ -12,12 +12,40 @@
   padding: 2rem;
   text-align: center;
 }
+.campo_formulario{
+  align-items: left;
+  text-align: left;
 
+  label{
+    color:var(--cor4);
+    width: 100%;
+  }
+  input{
+    width: 100%;
+     background-color: var(--cor5);
+  color: var(--cor4);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  }
+  select{ 
+    width:100%;
+     background-color: var(--cor5);
+  color: var(--cor4);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  }
+}
 body{
   background-color: var(--cor1);
 }
 .Logo{
-  width: 100px;
+  width: 300px;
 }
 .formulario{
   background-color: var(--cor3);
@@ -30,18 +58,17 @@ h1 {
   margin-top: 0;
 }
 
+h2 {
+  color: var(--cor4);
+  margin-top: 0;
+  
+}
+
 p {
   color: var(--cor4);
 }
 
-input {
-  background-color: var(--cor5);
-  color: var(--cor4);
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
+
 
 button {
   background-color: var(--cor1);
