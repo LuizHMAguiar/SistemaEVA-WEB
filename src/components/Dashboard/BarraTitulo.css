@@ -1,0 +1,17 @@
+.BarraTitulo{
+  width: 100%;
+  background-color: var(--cor5);
+  color: var(--cor4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6rem;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 15rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
