@@ -1,0 +1,104 @@
+
+
+.Conteudo {
+  width: calc(100% - 15rem);
+  height: 100vh;
+  color: var(--cor4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 15rem;
+  margin-top: 8rem;
+  font-size: 30px;
+  padding: 2rem ;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-content: flex-start;
+}
+
+.Avaliacao{
+  width: calc(30% - 0.5rem);
+  background-color: var(--cor5);
+  color: var(--cor4);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  padding: 1rem;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.Cabecalho{
+    display: flex;
+}
+
+
+.TituloProva {
+  font-size: 25px;
+  font-weight: bold;
+  margin-left:1rem;
+}
+
+.MaisDetalhesAvaliacao{
+    display: flex;
+    
+    margin: 1rem;
+}
+
+.Data {
+  font-size: 14px;
+  font-weight: bold;
+  margin-left:1rem;
+}
+
+.Tempo {
+  font-size: 14px;
+  font-weight: bold;
+  margin-left:1rem;
+}
+
+.Questoes {
+  font-size: 14px;
+  font-weight: bold;
+  margin-left:1rem;
+}
+
+.Botao {
+  font-size: 20px;
+  color: var(--cor4);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin-left: 0;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 1rem;
+}
+
+.Botao{
+    background-color: rgb(25, 18, 217);
+}
+
+.TipoAvaliacao {
+  font-size: 14px;
+  color: var(--cor4);
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.TipoProva{
+    background-color: rgb(150, 212, 158);
+}
+
+.TipoSimulado{
+    background-color: rgb(224, 143, 208);
+}
+
+.Disciplina{
+    font-size: 18px;
+    color: var(--cor4);
+    padding: 0.5rem;
+    margin: 1rem;
+}
