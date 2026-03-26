@@ -1,0 +1,35 @@
+.Modal {
+  background-color: var(--cor5);
+  color: var(--cor4);
+  padding: 2rem;
+}
+
+.avaliacao{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.botoes{
+    display: flex;
+    gap:2rem;
+}
+
+.valor{
+    text-align: end;
+}
+.Logo{
+  width: 300px;
+}
+.Logo{
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.Logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.Logo:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}

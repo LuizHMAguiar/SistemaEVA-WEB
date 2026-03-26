@@ -4,6 +4,7 @@ import { FormularioCadastro } from './components/Cadastro/FormularioCadastro.tsx
 import { BarraTitulo } from './components/Dashboard/BarraTitulo.tsx'
 import { Menu } from './components/Dashboard/Menu.tsx'
 import { Conteudo } from './components/Dashboard/Conteudo.tsx'
+import { Modal } from './components/Dashboard/Modal.tsx'
 
 
 
@@ -12,9 +13,7 @@ function App() {
 
   return (
     <>
-      <BarraTitulo />
-      <Menu />
-      <Conteudo />
+      <Modal />
     </>
   )
 }
