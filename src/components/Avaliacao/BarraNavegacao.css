@@ -1,0 +1,30 @@
+.BarraNavegacao{
+  width: 100%;
+  background-color: var(--cor5);
+  color: var(--cor4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 8rem;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.Titulo{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.Menssagem{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+}
+
+

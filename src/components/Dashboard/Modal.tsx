@@ -1,12 +1,11 @@
-import Logo from '../../assets/Logo.png'
+
 import "./Modal.css"
 
 export function Modal(){
     return (
         <div className="Modal">
-            <div className="icone">
-
-            </div>
+            <div className="icone"></div>
+            
             <div className="titulo">
                 Iniciar Avaliação?
             </div>
