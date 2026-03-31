@@ -1,0 +1,29 @@
+.Areaquestao {
+background-color: var(--cor5);
+}
+
+.Status {
+background-color: var(--cor5);
+color: var(--cor4);
+border: 1px solid var(--cor1);
+margin-bottom: 1rem;
+}
+
+.Enunciado{
+    color: var(--cor4);
+    text-align: left;
+    margin: 0 2rem;
+}
+
+.Opcoes{
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+.Botaoopcao{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+
+
+}

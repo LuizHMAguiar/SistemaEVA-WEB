@@ -1,0 +1,10 @@
+.botoes {
+  font-size: 20px;
+  color: var(--cor4);
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin-left: 0;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 1rem;
+}

@@ -7,14 +7,16 @@ import { Menu } from './components/Dashboard/Menu.tsx'
 import { Conteudo } from './components/Dashboard/Conteudo.tsx'
 import { Modal } from './components/Dashboard/Modal.tsx'*/
 import {BarraNavegacao} from './components/Avaliacao/BarraNavegacao.tsx'
-
-
+import { BotoesNavegacao } from './components/Avaliacao/BotoesNavegacao.tsx'
+import { Questao } from './components/Avaliacao/Questao.tsx'
 
 function App() {
 
   return (
     <>
       <BarraNavegacao />
+      <Questao />
+      <BotoesNavegacao />
     </>
   )
 }
