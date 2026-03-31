@@ -1,4 +1,3 @@
-
 import "./Modal.css"
 
 export function Modal(){
