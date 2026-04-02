@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   // Allow preview to accept requests from this external host
   preview: {
-    allowedHosts: ['sistemaeva.onrender.com/'],
+    allowedHosts: ['sistemaeva.onrender.com'],
   },
 })
