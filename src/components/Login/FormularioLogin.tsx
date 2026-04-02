@@ -4,7 +4,7 @@ import Logo from "../../assets/Logo.png"
 export function FormularioLogin(){
 
     async function validarLogin(){
-        const resultado = await fetch("https://sistemaeva.onrender.com/login", {
+        const resultado = await fetch("https://sistemaeva-api.onrender.com/login", {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json', // Essencial para a API entender o JSON
