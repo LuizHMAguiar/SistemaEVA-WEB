@@ -1,6 +1,12 @@
 import "./FormularioCadastro.css"
 import { useState } from "react";
 
+interface Instituicao{
+    cnpj: string,
+    email: string,
+    nome: string
+}
+
 export function FormularioCadastro(){
     const [cnpjInstituicao, setCnpjInstituicao] = useState("");
     const [curso, setCurso] = useState("");
@@ -10,14 +16,32 @@ export function FormularioCadastro(){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [confirmarSenha, setConfirmarSenha] = useState("");
+
+    const [instituicoes, setInstituicoes] = useState<Instituicao[]>();
     
+    async function buscaInstituicoes(){
+        const resultado = await fetch("https://sistemaeva-api.onrender.com/instituicao");
+
+        if (!resultado.ok) {
+            alert("Erro ao buscar lista de instituições.")
+            throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
+        }
+
+        const data = await resultado.json();
+        setInstituicoes(data);
+    }
+
+    if (instituicoes == null){
+        buscaInstituicoes()
+    }
+
 
 
     async function validarCadastro(){
 
         if(senha != confirmarSenha){alert('Senha não confere')}
 
-        const resultado = await fetch("https://sistemaeva-api.onrender.com/login", { 
+        const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno", { 
             method: 'POST',
             headers: {
             'Content-Type': 'application/json', // Essencial para a API entender o JSON
@@ -52,12 +76,13 @@ export function FormularioCadastro(){
                     <option id="0" value="0">
                         
                     </option>
-                    <option id="1" value="1">
-                        IFB - Campus São Sebastião
-                    </option>
-                    <option id="2" value="2">
-                        IFB - Campus Brasília
-                    </option>
+
+                    {instituicoes?.map((instituicao) => (
+                        <option id="{instituicao.cpnj}" value="{instituicao.cpnj}">
+                            {instituicao.nome}
+                        </option>  
+                    ))}
+
                 </select>
                 </label>
             </div>
