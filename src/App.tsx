@@ -1,21 +1,27 @@
 import './App.css'
-/*
-import { FormularioLogin } from './components/Login/FormularioLogin.tsx'
-import { BarraTitulo } from './components/Dashboard/BarraTitulo.tsx'
-import { Menu } from './components/Dashboard/Menu.tsx'
-import { Conteudo } from './components/Dashboard/Conteudo.tsx'
-import { Modal } from './components/Dashboard/Modal.tsx'
-import { BarraNavegacao} from './components/Avaliacao/BarraNavegacao.tsx'
-import { BotoesNavegacao } from './components/Avaliacao/BotoesNavegacao.tsx'
-import { Questao } from './components/Avaliacao/Questao.tsx'*/
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
+import { FormularioLogin } from './components/Login/FormularioLogin.tsx'
 import { FormularioCadastro } from './components/Cadastro/FormularioCadastro.tsx'
+import { Dashboard } from './components/Dashboard/Dashboard.tsx'
+import { Avaliacao } from './components/Avaliacao/Avaliacao.tsx'
+
 
 function App() {
 
   return (
     <>
-      <FormularioCadastro/>
+
+      <Router>
+
+        <Routes>
+          <Route path="/" element={<FormularioLogin />} />
+          <Route path="/login" element={<FormularioLogin />} />
+          <Route path="/cadastro" element={<FormularioCadastro />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/avaliacao" element={<Avaliacao />} />
+        </Routes>
+      </Router>
     </>
   )
 }

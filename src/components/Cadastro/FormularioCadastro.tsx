@@ -59,6 +59,8 @@ export function FormularioCadastro(){
             alert("Erro ao cadastrar estudante.")
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
+
+        alert("Aluno cadastrado com sucesso!")
     }
 
     return(

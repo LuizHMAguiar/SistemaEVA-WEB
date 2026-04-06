@@ -1,8 +1,16 @@
 import "./Conteudo.css"
 
+import { Modal } from './Modal.tsx'
+
 export function Conteudo(){
     return (
         <div className="Conteudo">
+
+
+            <Modal></Modal>
+
+
+
             <div className="Avaliacao">
                 <div className="Cabecalho">
                     <div className="TipoAvaliacao TipoProva">
