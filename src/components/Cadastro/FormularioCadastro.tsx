@@ -46,7 +46,7 @@ export function FormularioCadastro(){
             headers: {
             'Content-Type': 'application/json', // Essencial para a API entender o JSON
             },
-            body: "{\"cnpj_instituição\": \""+cnpjInstituicao+
+            body: "{\"cnpj_instituicao\": \""+cnpjInstituicao+
             "\",\"curso\": \""+curso+
             "\",\"turma\": \""+turma+
             "\",\"nome_completo\": \""+nome_completo+
@@ -78,7 +78,7 @@ export function FormularioCadastro(){
                     </option>
 
                     {instituicoes?.map((instituicao) => (
-                        <option id="{instituicao.cpnj}" value="{instituicao.cpnj}">
+                        <option id={instituicao.cnpj} value={instituicao.cnpj}>
                             {instituicao.nome}
                         </option>  
                     ))}
