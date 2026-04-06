@@ -32,24 +32,21 @@ export function FormularioCadastro(){
         });
 
         if (!resultado.ok) {
-            setErro(true);
+            alert("Erro ao cadastrar estudante.")
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
-
-        setLogado(true);
     }
 
     return(
         <div className="formulario">
-        
-        
+
         <h2>Cadastro de aluno</h2>
         <form>
-            <div className='campo_formulario' onChange={(e) => setCnpjInstituicao(e.target.value)}>
+            <div className='campo_formulario' >
                 <label>
                     Instituição*
             
-                <select
+                <select onChange={(e) => setCnpjInstituicao(e.target.value)}
                 >
                     Instituição
                     <option id="0" value="0">
@@ -64,20 +61,20 @@ export function FormularioCadastro(){
                 </select>
                 </label>
             </div>
-            <div className='campo_formulario' onChange={(e) => setCurso(e.target.value)}>
+            <div className='campo_formulario'>
                 <label>
                     Curso
-                <input
+                <input onChange={(e) => setCurso(e.target.value)}
                 >
                 </input>
                 </label>
             </div>
           
-            <div className='campo_formulario' onChange={(e) => setTurma(e.target.value)}>
+            <div className='campo_formulario'>
                 <label>
                     Turma
 
-                <input
+                <input onChange={(e) => setTurma(e.target.value)}
                 >
                 </input>
                 </label>
