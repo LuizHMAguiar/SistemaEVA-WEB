@@ -1,8 +1,11 @@
 import "./FormularioLogin.css"
 import Logo from "../../assets/Logo.png"
 import { useState } from "react";
+import { useNavigate, Link } from 'react-router-dom';
+import { Notificacao } from "../Notificacao/Notificacao";
 
 export function FormularioLogin(){
+    const navigate = useNavigate();
     const [logado, setLogado] = useState(false);
     const [erro, setErro] = useState(false);
     const [cpf, setCpf] = useState("");
@@ -20,10 +23,14 @@ export function FormularioLogin(){
 
         if (!resultado.ok) {
             setErro(true);
+            setTimeout(() => setErro(false), 3000);
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
 
         setLogado(true);
+        setTimeout(() => setLogado(false), 3000);
+        navigate("/dashboard")
+        
     }
 
     return(
@@ -53,14 +60,14 @@ export function FormularioLogin(){
             Esqueceu a senha?
             </p>
         <p>
-            Cadastre-se aqui
+            <Link to="/cadastro">Cadastre-se aqui</Link>
         </p>
 
         {logado?
-        <p>Login com sucesso</p>
+            <Notificacao tipo="sucesso" titulo="Login" mensagem="Login realizado com sucesso"/>
         :
         erro?
-            <p>Login falhou</p>
+            <Notificacao tipo="falha" titulo="Login" mensagem="Login falhou"/>
             :
             <></>
         }

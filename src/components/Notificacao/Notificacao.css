@@ -1,0 +1,15 @@
+.notificacao{
+    background-color: var(--cor5);
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.notificacao-titulo{
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
