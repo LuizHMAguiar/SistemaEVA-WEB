@@ -30,11 +30,18 @@
   color: var(--cor4);
 }
 
-.Avaliações {
+.BuscarAvaliacoes {
   font-size: 15px;
   text-align: left;
   color: var(--cor4);
-  border: 1px solid var(--cor4);
+  padding: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.Avaliacoes {
+  font-size: 15px;
+  text-align: left;
+  color: var(--cor4);
   padding: 0.2rem;
   margin-bottom: 1rem;
 }
@@ -43,7 +50,20 @@
   font-size: 15px;
   text-align: left;
   color: var(--cor4);
-  border: 1px solid var(--cor4);
   padding: 0.2rem;
   margin-bottom: 1rem;
 }
+
+input{
+  width: 100%;
+  background-color: var(--cor5);
+  color: var(--cor4);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid var(--cor4);
+}
+
+

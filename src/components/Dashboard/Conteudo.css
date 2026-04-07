@@ -20,6 +20,7 @@
 
 .Avaliacao{
   width: calc(30% - 0.5rem);
+  min-width: 25rem;
   background-color: var(--cor5);
   color: var(--cor4);
   font-size: 30px;
@@ -77,8 +78,8 @@
   margin: 1rem;
 }
 
-.Botao{
-    background-color: rgb(25, 18, 217);
+.Botao button{
+  width: 100%;
 }
 
 .TipoAvaliacao {
@@ -101,4 +102,52 @@
     color: var(--cor4);
     padding: 0.5rem;
     margin: 1rem;
+}
+
+
+
+/* Modal */
+.Modal {
+  background-color: var(--cor5);
+  color: var(--cor4);
+  padding: 2rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40rem;
+}
+
+.pelicula{
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.293);
+  backdrop-filter: blur(5px);
+}
+
+.avaliacao{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.botoes{
+    display: flex;
+    gap:2rem;
+}
+
+.valor{
+    text-align: end;
+}
+
+.icone{
+  background-image: url("../../assets/Exclamacao.png");
+  background-size: cover;
+  width: 2em;
+  height: 2em;
+  margin: 0 auto;
+  margin-bottom: 1em; 
 }

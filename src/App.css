@@ -37,4 +37,10 @@ button {
   background-color: var(--cor1);
   color: var(--cor3);
   border: none;
+  transition: background-color 0.5s, color 0.5s;
+
+  &:hover{
+    background-color: var(--cor2);
+    color: var(--cor4)
+  }
 }

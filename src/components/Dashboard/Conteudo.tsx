@@ -1,100 +1,129 @@
+import { useState } from "react";
 import "./Conteudo.css"
 
-import { Modal } from './Modal.tsx'
+interface Avaliacao{
+    CPF_professor: string;
+    ID: number;
+    codigo_acesso: string;
+    curso: string;
+    data_fim: string;
+    data_inicio: string;
+    disciplina: string;
+    tempo: string;
+    tipo: string;
+    titulo: string;
+    turma: string;
+}
+
 
 export function Conteudo(){
+    const [mostraModal,setMostraModal] = useState(false);
+    const [avaliacoesAtivas, setAvaliacoesAtivas] = useState<Avaliacao[]>();
+
+    async function buscaAvaliacoesAtivas(){
+        const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno/avaliacao/ativas/12345678910");
+
+        if (!resultado.ok) {
+            alert("Erro ao buscar lista de avaliacoes ativas.")
+            throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
+        }
+
+        const data = await resultado.json();
+        setAvaliacoesAtivas(data);
+    }
+
+    if (avaliacoesAtivas == null){
+        buscaAvaliacoesAtivas()
+    }
+
+
     return (
         <div className="Conteudo">
 
-
-            <Modal></Modal>
-
-
-
-            <div className="Avaliacao">
-                <div className="Cabecalho">
-                    <div className="TipoAvaliacao TipoProva">
-                    Prova
-                    </div>
-                    <div className="TituloProva">
-                        Provas de Algoritimos
-                    </div>
-                </div>
-                <div className="Disciplina">
-                    ProgramaçãoI - Turma2024-A
-                </div>
-                <div className="MaisDetalhesAvaliacao">
-                    <div className="Data">
-                    15/01-20/01/2024
-                    </div>
-                    <div className="Tempo">
-                        120 Min
-                    </div>
-                    <div className="Questoes">
-                        15 Questoes
-                    </div>
-                </div>
-                <div className="Botao">
-                    Iniciar Avaliação
-                </div>
-            </div>
-            <div className="Avaliacao">
-                <div className="Cabecalho">
-                    <div className="TipoAvaliacao TipoSimulado">
-                    Simulado
-                    </div>
-                    <div className="TituloProva">
-                        Simulado ENADE 2024
-                    </div>
-                </div>
-                <div className="Disciplina">
-                    ProgramaçãoI - Turma2024-A
-                </div>
-                <div className="MaisDetalhesAvaliacao">
-                    <div className="Data">
-                    15/01-20/01/2024
-                    </div>
-                    <div className="Tempo">
-                        120 Min
-                    </div>
-                    <div className="Questoes">
-                        20 Questoes
-                    </div>
-                </div>
-                <div className="Botao">
-                    Disponivel dia 29/08/2024
-                </div>           
             
-            </div>
+            {mostraModal && <div className="pelicula"></div>}
 
-            <div className="Avaliacao">
-                <div className="Cabecalho">
-                    <div className="TipoAvaliacao TipoSimulado">
-                    Simulado
+            {mostraModal && 
+            <div className="Modal">
+                
+                <div className="icone"></div>
+                
+                <div className="titulo">
+                    Iniciar Avaliação?
+                </div>
+                <div className="avaliacao">
+                    <div className="label">
+                        Avaliação
                     </div>
-                    <div className="TituloProva">
-                        Simulado ENADE 2024
+                    <div className="valor">
+                        Prova de Algoritmos
                     </div>
                 </div>
-                <div className="Disciplina">
-                    ProgramaçãoI - Turma2024-A
-                </div>
-                <div className="MaisDetalhesAvaliacao">
-                    <div className="Data">
-                    15/01-20/01/2024
+
+                <div className="avaliacao">
+                    <div className="label">
+                        Tempo Limite:
                     </div>
-                    <div className="Tempo">
-                        120 Min
-                    </div>
-                    <div className="Questoes">
-                        20 Questoes
+                    <div className="valor">
+                        120 min
                     </div>
                 </div>
-                <div className="Botao">
-                    Disponivel dia 29/08/2024
-                </div>           
-            
+
+                <div className="avaliacao">
+                    <div className="label">
+                        Disponivel Até:
+                    </div>
+                    <div className="valor">
+                        20/03/2026 - 11:50
+                    </div>
+                </div>
+                
+                <div className="botoes">
+                    <button onClick={() => setMostraModal(false)}>
+                        Cancelar
+                    </button>
+                    <button>
+                        Iniciar Avaliação
+                    </button>
+                </div>
             </div>
+            }
+
+            {avaliacoesAtivas?.map((avaliacao) => (
+                <div className="Avaliacao">
+                    <div className="Cabecalho">
+                        <div className="TipoAvaliacao TipoProva">
+                        {avaliacao.tipo}
+                        </div>
+                        <div className="TituloProva">
+                            {avaliacao.titulo}
+                        </div>
+                    </div>
+                    <div className="Disciplina">
+                        Código: {avaliacao.codigo_acesso}
+                    </div>
+                    <div className="Disciplina">
+                        {avaliacao.curso} - {avaliacao.turma} - {avaliacao.disciplina}
+                    </div>
+                    <div className="MaisDetalhesAvaliacao">
+                        <div className="Data">
+                        {new Date(avaliacao.data_inicio).toLocaleDateString('pt-BR')} - {new Date(avaliacao.data_fim).toLocaleDateString('pt-BR')}
+                        </div>
+                        <div className="Tempo">
+                            {avaliacao.tempo}
+                        </div>
+                    </div>
+                    <div className="Botao">
+                        <button onClick={() => setMostraModal(true)}>
+                            Iniciar Avaliação
+                        </button>
+                    </div>
+                </div>
+            ))}
+
+            
+
+
                 
         </div>
         )
