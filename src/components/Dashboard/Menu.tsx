@@ -23,15 +23,6 @@ export function Menu(){
 
     return (
         <div className="Menu">
-            <div className="Perfil">
-                <div className="Nome">
-                    Rafael
-                </div>
-                <div className="Tipo">
-                    Aluno
-                </div>
-            </div>
-
              <div className="BuscarAvaliacoes">
                 <input placeholder='Código da Avaliação' onChange={(e) => setCod_Avaliacao(e.target.value)}>
                 </input>
@@ -39,19 +30,6 @@ export function Menu(){
                 Buscar Avalição   
                 </button>
             </div>
-
-            <div className="Avaliacoes">
-                <button> 
-                Avaliações Disponiveis   
-                </button>
-            </div>
-
-             <div className="Concluidas">
-                <button>
-                Concluídas
-                </button>
-            </div>
-            
         </div>
     )
 }
