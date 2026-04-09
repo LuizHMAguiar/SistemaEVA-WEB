@@ -1,6 +1,14 @@
 import "./BarraTitulo.css"
 
-export function BarraTitulo(){
+interface BarraTituloProps {
+    nome?: string;
+    tipo?: string;
+}
+
+export function BarraTitulo({ nome, tipo }: BarraTituloProps){
+    const nomeExibido = nome || "Rafael";
+    const tipoExibido = tipo || "Aluno";
+
     return (
         <div className="BarraTitulo">
             <div className="Titulo">
@@ -8,10 +16,10 @@ export function BarraTitulo(){
             </div> 
             <div className="Perfil">
                 <div className="Nome">
-                    Rafael
+                    {nomeExibido}
                 </div>
                 <div className="Tipo">
-                    Aluno
+                    {tipoExibido}
                 </div>
             </div>
         </div>

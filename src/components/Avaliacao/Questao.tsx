@@ -4,9 +4,6 @@ import "./Questao.css"
 export function Questao(){
     return (
         <div className="Questao">
-            <div className="Status">
-                Questão 1 de 15
-            </div>
             <div className="Areaquestao">
             <div className="Enunciado">
                 enunciado

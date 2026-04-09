@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export function Menu(){
         const [cod_avaliacao, setCod_Avaliacao] = useState("");
-
         async function AdicionaAvaliacao(){
             const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno/avaliacao", { 
                 method: 'POST',
@@ -18,19 +17,6 @@ export function Menu(){
                 alert("Erro ao buscar avaliacao.")
                 throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
             }
-
         }
-
-    return (
-        <div className="Menu">
-             <div className="BuscarAvaliacoes">
-                <input placeholder='Código da Avaliação' onChange={(e) => setCod_Avaliacao(e.target.value)}>
-                </input>
-                <button onClick={() => AdicionaAvaliacao()}> 
-                Buscar Avalição   
-                </button>
-            </div>
-        </div>
-    )
 }
 

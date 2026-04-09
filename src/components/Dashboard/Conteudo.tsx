@@ -15,31 +15,55 @@ interface Avaliacao{
     turma: string;
 }
 
-
 export function Conteudo(){
     const [mostraModal,setMostraModal] = useState(false);
+    const [buscouAvaliacoes,setBuscouAvaliacoes] = useState(false);
     const [avaliacoesAtivas, setAvaliacoesAtivas] = useState<Avaliacao[]>();
 
     async function buscaAvaliacoesAtivas(){
         const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno/avaliacao/ativas/12345678910");
 
         if (!resultado.ok) {
-            alert("Erro ao buscar lista de avaliacoes ativas.")
+            //alert("Erro ao buscar lista de avaliacoes ativas.")
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
 
         const data = await resultado.json();
         setAvaliacoesAtivas(data);
+        setBuscouAvaliacoes(true)
     }
 
-    if (avaliacoesAtivas == null){
+    if (avaliacoesAtivas == null && buscouAvaliacoes == false){
         buscaAvaliacoesAtivas()
     }
 
+    const [cod_avaliacao, setCod_Avaliacao] = useState("");
+    
+    async function AdicionaAvaliacao(){
+        const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno/avaliacao", { 
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json', // Essencial para a API entender o JSON
+            },
+            body: "{\"cpf_aluno\": \""+"12345678910"+
+            "\",\"cod_avaliacao\": \""+cod_avaliacao+"\"}"
+        });
+        if (!resultado.ok) {
+            alert("Erro ao buscar avaliacao.")
+            throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
+        }
+    }
 
     return (
+        
         <div className="Conteudo">
-
+             <div className="BuscarAvaliacoes">
+                <input placeholder='Código da Avaliação' onChange={(e) => setCod_Avaliacao(e.target.value)}>
+                </input>
+                <button onClick={() => {AdicionaAvaliacao()}}> 
+                Buscar Avalição   
+                </button>
+            </div>
             
             {mostraModal && <div className="pelicula"></div>}
 
@@ -89,6 +113,8 @@ export function Conteudo(){
             </div>
             }
 
+            {!avaliacoesAtivas && <p>Nenhuma avaliação adicionada</p>}
+
             {avaliacoesAtivas?.map((avaliacao) => (
                 <div className="Avaliacao">
                     <div className="Cabecalho">
@@ -120,11 +146,7 @@ export function Conteudo(){
                     </div>
                 </div>
             ))}
-
-            
-
-
-                
         </div>
         )
 }
+

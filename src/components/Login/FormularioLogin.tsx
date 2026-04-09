@@ -27,9 +27,20 @@ export function FormularioLogin(){
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
 
+        const data = await resultado.json();
+        const nome = data.usuario.nome || "";
+        const tipo = data.usuario.tipo || "";
+        const email = data.usuario.email || "";
+        const cpf_cnpj = data.usuario.cpf || data.usuario.cnpj || "";
+        const instituicao = data.usuario.instituicao || "";
+        
+        
+
+        localStorage.setItem("usuario", JSON.stringify({ nome, tipo }));
+
         setLogado(true);
         setTimeout(() => setLogado(false), 3000);
-        navigate("/dashboard")
+        navigate("/dashboard", { state: { nome, tipo } });
         
     }
 
