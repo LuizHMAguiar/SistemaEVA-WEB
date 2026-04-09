@@ -3,11 +3,17 @@ import "./BarraTitulo.css"
 interface BarraTituloProps {
     nome?: string;
     tipo?: string;
+    email?: string;
+    cpf_cnpj?: string;
+    instituicao?: string;
 }
 
-export function BarraTitulo({ nome, tipo }: BarraTituloProps){
-    const nomeExibido = nome || "Rafael";
-    const tipoExibido = tipo || "Aluno";
+export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: BarraTituloProps){
+    const nomeExibido = nome || "";
+    const tipoExibido = tipo || "";
+    /*const emailExibido = email || "";
+    const cpf_cnpjExibido = cpf_cnpj || "";
+    const instituicaoExibido = instituicao || "";*/
 
     return (
         <div className="BarraTitulo">

@@ -15,10 +15,17 @@
   gap: 2rem;
   align-content: flex-start;
 }
+.Avaliacoes {
+display:flex ;
+gap: 1rem;
+flex-wrap: wrap;
+justify-content: center;
+}
 
 .Avaliacao{
   width: calc(30% - 0.5rem);
   min-width: 25rem;
+  max-width: 35rem;
   background-color: var(--cor5);
   color: var(--cor4);
   font-size: 30px;

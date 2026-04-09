@@ -6,6 +6,9 @@ import { Conteudo } from "./Conteudo"
 interface DashboardState {
     nome?: string;
     tipo?: string;
+    email?: string;
+    cpf_cnpj?: string;
+    instituicao?: string; 
 }
 
 export function Dashboard(){
@@ -15,6 +18,10 @@ export function Dashboard(){
     const storageUser = JSON.parse(localStorage.getItem("usuario") || "{}") as DashboardState;
     const nome = locationState?.nome || storageUser?.nome || "";
     const tipo = locationState?.tipo || storageUser?.tipo || "";
+    const email = locationState?.email || storageUser?.email || "";
+    const cpf_cnpj = locationState?.cpf_cnpj || storageUser?.cpf_cnpj || "";
+    const instituicao = locationState?.instituicao || storageUser?.instituicao || "";
+    
 
     useEffect(() => {
         if (nome == "" || tipo == "") {
@@ -25,8 +32,8 @@ export function Dashboard(){
 
     return (
         <>
-            <BarraTitulo nome={nome} tipo={tipo} />
-            <Conteudo />
+            <BarraTitulo nome={nome} tipo={tipo} email={email} cpf_cnpj={cpf_cnpj} instituicao={instituicao} />
+            <Conteudo /> 
         </>
     )
 } 

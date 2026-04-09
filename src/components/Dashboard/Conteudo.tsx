@@ -113,6 +113,9 @@ export function Conteudo(){
             </div>
             }
 
+            <div className="Avaliacoes">
+                
+
             {!avaliacoesAtivas && <p>Nenhuma avaliação adicionada</p>}
 
             {avaliacoesAtivas?.map((avaliacao) => (
@@ -146,6 +149,8 @@ export function Conteudo(){
                     </div>
                 </div>
             ))}
+            
+            </div>
         </div>
         )
 }

@@ -36,11 +36,11 @@ export function FormularioLogin(){
         
         
 
-        localStorage.setItem("usuario", JSON.stringify({ nome, tipo }));
+        localStorage.setItem("usuario", JSON.stringify({ nome, tipo, email, cpf_cnpj, instituicao}));
 
         setLogado(true);
         setTimeout(() => setLogado(false), 3000);
-        navigate("/dashboard", { state: { nome, tipo } });
+        navigate("/dashboard", { state: { nome, tipo, email, cpf_cnpj, instituicao}});
         
     }
 
