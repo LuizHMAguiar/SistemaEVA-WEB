@@ -21,7 +21,7 @@ export function Conteudo(){
     const [avaliacoesAtivas, setAvaliacoesAtivas] = useState<Avaliacao[]>();
 
     async function buscaAvaliacoesAtivas(){
-        const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno/avaliacao/ativas/12345678910");
+        const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno/avaliacoes/11111111111");
 
         if (!resultado.ok) {
             //alert("Erro ao buscar lista de avaliacoes ativas.")
