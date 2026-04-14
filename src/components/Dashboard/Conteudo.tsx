@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Conteudo.css"
 
-interface Avaliacao{
+interface Avaliacao {
     CPF_professor: string;
     ID: number;
     codigo_acesso: string;
@@ -15,7 +15,20 @@ interface Avaliacao{
     turma: string;
 }
 
-export function Conteudo(){
+interface ConteudoProps {
+    nome?: string;
+    tipo?: string;
+    email?: string;
+    cpf_cnpj?: string;
+    instituicao?: string;
+}
+
+export function Conteudo({ nome, tipo, email, cpf_cnpj, instituicao }: ConteudoProps){
+    const nomeExibido = nome || "";
+    const tipoExibido = tipo || "";
+    const emailExibido = email || "";
+    const cpf_cnpjExibido = cpf_cnpj || "";
+    const instituicaoExibido = instituicao || "";
     const [mostraModal,setMostraModal] = useState(false);
     const [buscouAvaliacoes,setBuscouAvaliacoes] = useState(false);
     const [avaliacoesAtivas, setAvaliacoesAtivas] = useState<Avaliacao[]>();

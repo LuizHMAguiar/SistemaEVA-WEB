@@ -33,7 +33,7 @@ export function Dashboard(){
     return (
         <>
             <BarraTitulo nome={nome} tipo={tipo} email={email} cpf_cnpj={cpf_cnpj} instituicao={instituicao} />
-            <Conteudo /> 
+            <Conteudo nome={nome} tipo={tipo} email={email} cpf_cnpj={cpf_cnpj} instituicao={instituicao} /> 
         </>
     )
 } 

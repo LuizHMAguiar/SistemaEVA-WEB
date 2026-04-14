@@ -28,6 +28,12 @@ export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: Ba
                     {tipoExibido}
                 </div>
             </div>
+            <div className="Logout">
+            <button>
+            Sair    
+            </button>
+
+            </div>
         </div>
     )
 
