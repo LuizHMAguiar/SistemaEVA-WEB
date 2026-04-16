@@ -27,6 +27,7 @@
   text-align: left;
   border: 1px solid var(--cor4);
   padding: 0.5rem;
+  margin-right: 1rem;
 }
 
 .Nome {
@@ -39,6 +40,6 @@
   color: var(--cor4);
 }
 
-.logout{
-  
+.Logout{
+  margin-right: 5rem;
 }

@@ -1,5 +1,6 @@
 import "./FormularioCadastro.css"
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Instituicao{
     cnpj: string,
@@ -8,6 +9,7 @@ interface Instituicao{
 }
 
 export function FormularioCadastro(){
+    const navigate = useNavigate();
     const [cnpjInstituicao, setCnpjInstituicao] = useState("");
     const [curso, setCurso] = useState("");
     const [turma, setTurma] = useState("");
@@ -61,6 +63,8 @@ export function FormularioCadastro(){
         }
 
         alert("Aluno cadastrado com sucesso!")
+        navigate("/login");
+
     }
 
     return(

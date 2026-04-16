@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Conteudo.css"
+import { useNavigate } from "react-router-dom";
 
 interface Avaliacao {
     CPF_professor: string;
@@ -23,18 +24,28 @@ interface ConteudoProps {
     instituicao?: string;
 }
 
-export function Conteudo({ nome, tipo, email, cpf_cnpj, instituicao }: ConteudoProps){
-    const nomeExibido = nome || "";
-    const tipoExibido = tipo || "";
-    const emailExibido = email || "";
+export function Conteudo(
+    { 
+      //nome, 
+      //tipo, 
+      //email, 
+      cpf_cnpj, 
+      //instituicao 
+    }: ConteudoProps){
+    //const nomeExibido = nome || "";
+    //const tipoExibido = tipo || "";
+    //const emailExibido = email || "";
     const cpf_cnpjExibido = cpf_cnpj || "";
-    const instituicaoExibido = instituicao || "";
+    //const instituicaoExibido = instituicao || "";
+    const navigate = useNavigate();
     const [mostraModal,setMostraModal] = useState(false);
     const [buscouAvaliacoes,setBuscouAvaliacoes] = useState(false);
     const [avaliacoesAtivas, setAvaliacoesAtivas] = useState<Avaliacao[]>();
+    const [avaliacaoSelecionada, setAvaliacaoSelecionada] = useState<Avaliacao | null>(null);
+
 
     async function buscaAvaliacoesAtivas(){
-        const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno/avaliacoes/11111111111");
+        const resultado = await fetch("https://sistemaeva-api.onrender.com/aluno/avaliacoes/"+cpf_cnpjExibido);
 
         if (!resultado.ok) {
             //alert("Erro ao buscar lista de avaliacoes ativas.")
@@ -67,6 +78,37 @@ export function Conteudo({ nome, tipo, email, cpf_cnpj, instituicao }: ConteudoP
         }
     }
 
+    async function IniciarAvaliacao(){ 
+        const resultado = await fetch("https://sistemaeva-api.onrender.com/avaliacao/iniciar", { 
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json', // Essencial para a API entender o JSON
+            },
+            body: "{\"cpf_aluno\": \""+cpf_cnpjExibido+
+            "\",\"id_avaliacao\": \""+avaliacaoSelecionada?.ID+"\"}"
+        });
+        if (!resultado.ok) {
+            alert("Erro ao buscar avaliacao.")
+            throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
+        }
+        
+        navigate("/avaliacao", { state: 
+            {
+                id: avaliacaoSelecionada?.ID,
+                titulo: avaliacaoSelecionada?.titulo, 
+                cpf_professor: avaliacaoSelecionada?.CPF_professor, 
+                tipo: avaliacaoSelecionada?.tipo, 
+                curso: avaliacaoSelecionada?.curso, 
+                turma: avaliacaoSelecionada?.turma, 
+                disciplina: avaliacaoSelecionada?.disciplina, 
+                data_inicio: avaliacaoSelecionada?.data_inicio, 
+                data_fim: avaliacaoSelecionada?.data_fim, 
+                tempo: avaliacaoSelecionada?.tempo, 
+                codigo_acesso: avaliacaoSelecionada?.codigo_acesso
+            }} );
+    };
+    
+
     return (
         
         <div className="Conteudo">
@@ -80,51 +122,42 @@ export function Conteudo({ nome, tipo, email, cpf_cnpj, instituicao }: ConteudoP
             
             {mostraModal && <div className="pelicula"></div>}
 
-            {mostraModal && 
-            <div className="Modal">
-                
-                <div className="icone"></div>
-                
-                <div className="titulo">
-                    Iniciar Avaliação?
-                </div>
-                <div className="avaliacao">
-                    <div className="label">
-                        Avaliação
+            {mostraModal && avaliacaoSelecionada && (
+                <div className="Modal">
+                    <div className="titulo">Iniciar Avaliação?</div>
+                    
+                    <div className="avaliacao">
+                        <div className="label">Avaliação</div>
+                        <div className="valor">{avaliacaoSelecionada.titulo}</div>
                     </div>
-                    <div className="valor">
-                        Prova de Algoritmos
-                    </div>
-                </div>
 
-                <div className="avaliacao">
-                    <div className="label">
-                        Tempo Limite:
+                    <div className="avaliacao">
+                        <div className="label">Tempo Limite:</div>
+                        <div className="valor">{avaliacaoSelecionada.tempo}</div>
                     </div>
-                    <div className="valor">
-                        120 min
-                    </div>
-                </div>
 
-                <div className="avaliacao">
-                    <div className="label">
-                        Disponivel Até:
+                    <div className="avaliacao">
+                        <div className="label">Disponivel Até:</div>
+                        <div className="valor">
+                            {new Date(avaliacaoSelecionada.data_fim).toLocaleString('pt-BR')}
+                        </div>
                     </div>
-                    <div className="valor">
-                        20/03/2026 - 11:50
+                    
+                    <div className="botoes">
+                        <button onClick={() => {
+                            setMostraModal(false);
+                            setAvaliacaoSelecionada(null);
+                        }}>
+                            Cancelar
+                        </button>
+                        {/* Corrigido: Passe uma função anônima para o onClick */}
+                        <button onClick={() => IniciarAvaliacao()}>
+                            Iniciar Avaliação
+                        </button>
                     </div>
                 </div>
-                
-                <div className="botoes">
-                    <button onClick={() => setMostraModal(false)}>
-                        Cancelar
-                    </button>
-                    <button>
-                        Iniciar Avaliação
-                    </button>
-                </div>
-            </div>
-            }
+            )}
+
 
             <div className="Avaliacoes">
                 
@@ -156,7 +189,10 @@ export function Conteudo({ nome, tipo, email, cpf_cnpj, instituicao }: ConteudoP
                         </div>
                     </div>
                     <div className="Botao">
-                        <button onClick={() => setMostraModal(true)}>
+                        <button onClick={() => {
+                            setAvaliacaoSelecionada(avaliacao);
+                            setMostraModal(true);
+                        }}>
                             Iniciar Avaliação
                         </button>
                     </div>

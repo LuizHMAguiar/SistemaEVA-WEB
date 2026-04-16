@@ -6,11 +6,16 @@ import { Questao } from "./Questao"
 
 
 interface AvaliacaoState {
-    nome?: string;
+    id?: string;
+    titulo?: string;
+    cpf_professor?: string;
     tipo?: string;
-    email?: string;
-    cpf_cnpj?: string;
-    instituicao?: string; 
+    curso?: string; 
+    disciplina?: string;
+    data_inicio?: string;
+    data_fim?: string;
+    tempo?: string;
+    codigo_acesso?: string;
 }
 
 export function Avaliacao(){
@@ -18,21 +23,28 @@ export function Avaliacao(){
     const location = useLocation();
     const locationState = location.state as AvaliacaoState | null;
     const storageUser = JSON.parse(localStorage.getItem("usuario") || "{}") as AvaliacaoState;
-    const nome = locationState?.nome || storageUser?.nome || "";
-    const tipo = locationState?.tipo || storageUser?.tipo || "";
-    const email = locationState?.email || storageUser?.email || "";
-    const cpf_cnpj = locationState?.cpf_cnpj || storageUser?.cpf_cnpj || "";
-    const instituicao = locationState?.instituicao || storageUser?.instituicao || "";
+    const id = locationState?.id || storageUser?.id || "";
+    const titulo = locationState?.titulo || storageUser?.titulo || "";
+    const cpf_professor = locationState?.cpf_professor || storageUser?.cpf_professor || "";
+    const tipo = locationState?.tipo || storageUser?. tipo || "";
+    const curso = locationState?.curso || storageUser?.curso || "";
+    const disciplina = locationState?.disciplina || storageUser?.disciplina || "";
+    const data_inicio = locationState?.disciplina || storageUser?.disciplina || "";
+    const data_fim = locationState?.data_fim|| storageUser?.data_fim || "";
+    const tempo = locationState?.tempo || storageUser?. tempo  || "";
+    const codigo_acesso = locationState?.codigo_acesso || storageUser?.codigo_acesso || "";
+
 
     useEffect(() => {
-        if (nome == "" || tipo == "") {
+        if (titulo == "" || tipo == "") {
             //navigate("/login");
         }
-    }, [nome, tipo, navigate]);
+    }, [titulo, tipo, navigate]);
 
     return (
         <>
-            <BarraNavegacao /*nome={nome} tipo={tipo} email={email} cpf_cnpj={cpf_cnpj} instituicao={instituicao}*/ />
+            <BarraNavegacao id={id} titulo={titulo} disciplina={disciplina} tempo={tempo} /*nome={nome} tipo={tipo} email={email} cpf_cnpj={cpf_cnpj} instituicao={instituicao}*/ />
+
             <Questao />
             <BotoesNavegacao />
         </>
