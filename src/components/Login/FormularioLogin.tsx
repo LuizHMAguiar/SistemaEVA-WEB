@@ -11,7 +11,6 @@ export function FormularioLogin(){
     const [cpf, setCpf] = useState("");
     const [senha, setSenha] = useState("");
 
-
     async function validarLogin(){
         const resultado = await fetch("https://sistemaeva-api.onrender.com/login", { 
             method: 'POST',
@@ -34,14 +33,11 @@ export function FormularioLogin(){
         const cpf_cnpj = data.usuario.cpf || data.usuario.cnpj || "";
         const instituicao = data.usuario.instituicao || "";
         
-        
-
         localStorage.setItem("usuario", JSON.stringify({ nome, tipo, email, cpf_cnpj, instituicao}));
 
         setLogado(true);
         setTimeout(() => setLogado(false), 3000);
         navigate("/dashboard", { state: { nome, tipo, email, cpf_cnpj, instituicao}});
-        
     }
 
     return(
@@ -68,7 +64,7 @@ export function FormularioLogin(){
             ENTRAR
             </button>
             <p>
-            Esqueceu a senha?
+            <Link to="/recuperar">Esqueceu a senha?</Link> 
             </p>
         <p>
             <Link to="/cadastro">Cadastre-se aqui</Link>
@@ -82,7 +78,6 @@ export function FormularioLogin(){
             :
             <></>
         }
-        
         </div>
     )
 }
