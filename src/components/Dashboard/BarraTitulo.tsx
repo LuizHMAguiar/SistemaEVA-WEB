@@ -1,4 +1,5 @@
 import "./BarraTitulo.css"
+import { useNavigate } from "react-router-dom";
 
 interface BarraTituloProps {
     nome?: string;
@@ -14,6 +15,15 @@ export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: Ba
     /*const emailExibido = email || "";
     const cpf_cnpjExibido = cpf_cnpj || "";
     const instituicaoExibido = instituicao || "";*/
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        // Limpa dados do localStorage
+        localStorage.removeItem("token");
+        localStorage.removeItem("usuario");
+        
+        // Redireciona para login
+        navigate("/login");
+    };
 
     return (
         <div className="BarraTitulo">
@@ -29,10 +39,9 @@ export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: Ba
                 </div>
             </div>
             <div className="Logout">
-            <button>
-            Sair    
-            </button>
-
+                <button onClick={handleLogout}>
+                    Sair
+                </button>
             </div>
         </div>
     )
