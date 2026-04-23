@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Conteudo.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 interface Avaliacao {
     CPF_professor: string;
@@ -24,6 +24,15 @@ interface ConteudoProps {
     instituicao?: string;
 }
 
+interface UsuarioState {
+    nome?: string;
+    tipo?: string;
+    email?: string;
+    cpf_cnpj?: string;
+    instituicao?: string; 
+    token?: string;
+}
+
 export function Conteudo(
     { 
       //nome, 
@@ -38,6 +47,10 @@ export function Conteudo(
     const cpf_cnpjExibido = cpf_cnpj || "";
     //const instituicaoExibido = instituicao || "";
     const navigate = useNavigate();
+    const location = useLocation();
+    const locationState = location.state as UsuarioState | null;
+    const storageUser = JSON.parse(localStorage.getItem("usuario") || "{}") as UsuarioState;
+    const token = locationState?.token || storageUser?.token || "";
     const [mostraModal,setMostraModal] = useState(false);
     const [buscouAvaliacoes,setBuscouAvaliacoes] = useState(false);
     const [avaliacoesAtivas, setAvaliacoesAtivas] = useState<Avaliacao[]>();
@@ -68,8 +81,9 @@ export function Conteudo(
             method: 'POST',
             headers: {
             'Content-Type': 'application/json', // Essencial para a API entender o JSON
+            'Authorization': `Bearer ${token}`
             },
-            body: "{\"cpf_aluno\": \""+"12345678910"+
+            body: "{\"cpf_aluno\": \""+cpf_cnpjExibido+
             "\",\"cod_avaliacao\": \""+cod_avaliacao+"\"}"
         });
         if (!resultado.ok) {
@@ -83,12 +97,13 @@ export function Conteudo(
             method: 'POST',
             headers: {
             'Content-Type': 'application/json', // Essencial para a API entender o JSON
+            'Authorization': `Bearer ${token}`
             },
             body: "{\"cpf_aluno\": \""+cpf_cnpjExibido+
             "\",\"id_avaliacao\": \""+avaliacaoSelecionada?.ID+"\"}"
         });
         if (!resultado.ok) {
-            alert("Erro ao buscar avaliacao.")
+            alert("Erro ao buscar avaliacao."+avaliacaoSelecionada?.ID)
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
         
@@ -116,7 +131,7 @@ export function Conteudo(
                 <input placeholder='Código da Avaliação' onChange={(e) => setCod_Avaliacao(e.target.value)}>
                 </input>
                 <button onClick={() => {AdicionaAvaliacao()}}> 
-                Buscar Avalição   
+                Buscar Avaliação   
                 </button>
             </div>
             

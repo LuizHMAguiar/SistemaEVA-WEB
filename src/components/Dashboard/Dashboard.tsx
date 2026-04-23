@@ -9,6 +9,7 @@ interface DashboardState {
     email?: string;
     cpf_cnpj?: string;
     instituicao?: string; 
+    token?: string;
 }
 
 export function Dashboard(){

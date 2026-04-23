@@ -1,44 +1,33 @@
+import "./Questao.css";
 
-import "./Questao.css"
-
-export function Questao(){
-    return (
-        <div className="Questao">
-            <div className="Areaquestao">
-            <div className="Enunciado">
-                enunciado
-                </div>
-
-            <div className="Opcoes">
-                <div>
-                <button className="Botaoopcao">
-                    A
-                </button>
-                </div>
-                <div>
-                <button className="Botaoopcao">
-                    B
-                </button>
-                </div>
-                <div>
-                <button className="Botaoopcao">
-                    C
-                </button>
-                </div>
-                    <div>
-                <button className="Botaoopcao">
-                    D
-                </button>
-                </div>
-                    <div>
-                <button className="Botaoopcao">
-                    E
-                </button>
-                </div>
-        
-            </div>
-            </div>
-        </div>
-    )
+interface QuestaoProps {
+    id?: string;
+    tipo?: string;
+    enunciado?: string;
+    opcoes?: string[];
 }
 
+export function Questao({ id, tipo, enunciado, opcoes }: QuestaoProps) {
+    return (
+        <div className="Questao" id={id}>
+            <div className="Areaquestao">
+                <div>
+                    <p>ID:{id}, Tipo: {tipo}</p>
+                </div>
+                <div className="Enunciado">
+                    {enunciado}
+                </div>
+
+                <div className="Opcoes">
+                    {opcoes?.map((opcao, index) => (
+                        <div key={index}>
+                            <button className="Botaoopcao">
+                                {opcao}
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}

@@ -32,8 +32,9 @@ export function FormularioLogin(){
         const email = data.usuario.email || "";
         const cpf_cnpj = data.usuario.cpf || data.usuario.cnpj || "";
         const instituicao = data.usuario.instituicao || "";
+        const token = data.token
         
-        localStorage.setItem("usuario", JSON.stringify({ nome, tipo, email, cpf_cnpj, instituicao}));
+        localStorage.setItem("usuario", JSON.stringify({ nome, tipo, email, cpf_cnpj, instituicao, token}));
 
         setLogado(true);
         setTimeout(() => setLogado(false), 3000);
