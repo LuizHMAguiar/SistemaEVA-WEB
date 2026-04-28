@@ -8,3 +8,13 @@
   box-sizing: border-box;
   margin: 1rem;
 }
+
+.AreaBotoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.proximo{
+  margin-left: auto;
+}

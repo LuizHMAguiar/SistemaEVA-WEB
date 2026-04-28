@@ -111,6 +111,7 @@ export function Conteudo(
             {
                 id: avaliacaoSelecionada?.ID,
                 titulo: avaliacaoSelecionada?.titulo, 
+                cpf_aluno: cpf_cnpjExibido,
                 cpf_professor: avaliacaoSelecionada?.CPF_professor, 
                 tipo: avaliacaoSelecionada?.tipo, 
                 curso: avaliacaoSelecionada?.curso, 
