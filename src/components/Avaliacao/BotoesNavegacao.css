@@ -1,5 +1,5 @@
 .botoes {
-  font-size: 20px;
+  font-size: 1.2rem;
   color: var(--cor4);
   padding: 0.5rem;
   border-radius: 1rem;
@@ -17,4 +17,13 @@
 
 .proximo{
   margin-left: auto;
+}
+
+
+:root {
+  --tamanho-fonte: 1 rem;
+}
+
+.BarraNavegacao {
+  font-size: var(--tamanho-fonte);
 }
