@@ -1,44 +1,47 @@
 import { useState } from "react";
 import "./BarraNavegacao.css"
 
-
 interface BarraNavegacaoProps {
     id?: string;
     titulo?: string;
     disciplina?: string;
     tempo?: string;
-    
 }
 
 export function BarraNavegacao({ id, titulo, disciplina, tempo }: BarraNavegacaoProps){
     const idExibido = id || "";
     const tituloExibido = titulo || "";
-    const disciplinaExibido = disciplina || "";
-    const tempoExibido = tempo || "";
-
-    const [tamanhoFonte, setTamanhoFonte] = useState(16);
-
-    function aumentarFonte() {
-        setTamanhoFonte(tamanhoFonte + 2);
-    }
+    
+    // Altera o estado inicial para 100 (representando 100%)
+    const [tamanhoFonte, setTamanhoFonte] = useState(100);
 
     function aumentarFonte() {
-        const novo = tamanhoFonte + 2;
-        setTamanhoFonte(novo);
-        document.documentElement.style.setProperty('font-size', `${novo}%`);
+        // Limita o aumento até 250%
+        if (tamanhoFonte < 250) {
+            const novo = tamanhoFonte + 10;
+            setTamanhoFonte(novo);
+            document.documentElement.style.fontSize = `${novo}%`;
+        }
     }
 
     function diminuirFonte() {
-        const novo = Math.max(12, tamanhoFonte - 2);
-        setTamanhoFonte(novo);
-        document.documentElement.style.setProperty('font-size', `${novo}%`);
+        // Limita a redução até 100%
+        if (tamanhoFonte > 100) {
+            const novo = tamanhoFonte - 10;
+            setTamanhoFonte(novo);
+            document.documentElement.style.fontSize = `${novo}%`;
+        }
     }
-    
     
     return (
         <div className="BarraNavegacao">
             <div className="Titulo">
-                Respondendo Avaliação: {tituloExibido}    
+                <div className="AvaliacaoTitulo">
+                    Respondendo Avaliação: {tituloExibido} ({idExibido})
+                </div>
+                <div className="AvaliacaoDescricao">
+                    {disciplina} - Tempo: {tempo}
+                </div>
             </div>
             <div className="Menssagem">
                 Avaliação Iniciada! Boa Sorte!
@@ -48,7 +51,6 @@ export function BarraNavegacao({ id, titulo, disciplina, tempo }: BarraNavegacao
                 <button className="botoes" onClick={diminuirFonte}>A-</button>
                 <button className="botoes" onClick={aumentarFonte}>A+</button>
             </div>
-
         </div>
     )
 }

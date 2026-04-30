@@ -27,3 +27,18 @@
 .BarraNavegacao {
   font-size: var(--tamanho-fonte);
 }
+
+.Titulo{
+  display: flex;
+  flex-direction: column;
+}
+
+.AvaliacaoTitulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.AvaliacaoDescricao {
+  font-size: 0.9rem;
+  color: var(--cor4);
+}
