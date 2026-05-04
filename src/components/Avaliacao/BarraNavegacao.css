@@ -1,7 +1,7 @@
 .BarraNavegacao{
   width: 100%;
-  background-color: var(--cor5);
-  color: var(--cor4);
+  background-color: var(--cor1);
+  color: var(--cor5);
   position: fixed;
   top: 0;
   left: 0;

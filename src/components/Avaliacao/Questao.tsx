@@ -42,9 +42,6 @@ export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, tipo, enun
     return (
         <div className="Questao" id={id_questao}>
             <div className="Areaquestao">
-                <div>
-                    <p>ID:{id_questao}, Tipo: {tipo}</p>
-                </div>
                 <div className="Enunciado">
                     {enunciado}
                 </div>

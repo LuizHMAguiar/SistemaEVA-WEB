@@ -4,6 +4,7 @@
   --cor3:rgb(149, 197, 222);
   --cor4:black;
   --cor5:rgb(231, 224, 224);
+  --cor6:#222222;
 }
 
 #root {
@@ -14,7 +15,7 @@
 }
 
 body{
-  background-color: var(--cor1);
+  background-color: var(--cor4);
 }
 
 h1 {
@@ -35,7 +36,7 @@ p {
 
 button {
   background-color: var(--cor1);
-  color: var(--cor3);
+  color: var(--cor5);
   border: none;
   transition: background-color 0.5s, color 0.5s;
 
