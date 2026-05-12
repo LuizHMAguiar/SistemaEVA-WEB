@@ -24,14 +24,15 @@
 .Perfil {
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: center;
   border: 1px solid var(--cor4);
-  padding: 0.5rem;
+  padding: 0.6rem;
   margin-right: 1rem;
+  width: 15rem;
 }
 
 .Nome {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -42,4 +43,43 @@
 
 .Logout{
   margin-right: 5rem;
+  font-size: 15px;
+  padding: 0.2rem;
+  text-align: center;
+}
+
+/* Cores padrão do seu site */
+:root {
+  --bg-principal: #f4f4f4;
+  --texto-principal: #333333;
+  --cor-botao: #0056b3;
+  --texto-botao: #ffffff;
+}
+
+/* Classe que será aplicada ao Body ou Div principal */
+.modo-baixa-visao {
+  --bg-principal: #000000;    /* Fundo preto */
+  --texto-principal: #ffff00; /* Texto amarelo (máximo contraste) */
+  --cor-botao: #ffff00;
+  --texto-botao: #000000;
+  
+  /* Dica extra: aumenta um pouco o peso da fonte para facilitar a leitura */
+  font-weight: bold;
+}
+
+/* Aplicação das variáveis */
+.container {
+  background-color: var(--bg-principal);
+  color: var(--texto-principal);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+button.botao-acao {
+  background-color: var(--cor-botao);
+  color: var(--texto-botao);
+  border: 2px solid var(--texto-principal);
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
 }

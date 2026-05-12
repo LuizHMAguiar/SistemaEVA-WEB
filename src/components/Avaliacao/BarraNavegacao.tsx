@@ -16,8 +16,8 @@ export function BarraNavegacao({ id, titulo, disciplina, tempo }: BarraNavegacao
     const [tamanhoFonte, setTamanhoFonte] = useState(100);
 
     function aumentarFonte() {
-        // Limita o aumento até 250%
-        if (tamanhoFonte < 250) {
+        // Limita o aumento até 200%
+        if (tamanhoFonte < 200) {
             const novo = tamanhoFonte + 10;
             setTamanhoFonte(novo);
             document.documentElement.style.fontSize = `${novo}%`;

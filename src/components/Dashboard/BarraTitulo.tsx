@@ -1,5 +1,6 @@
 import "./BarraTitulo.css"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+import React, { useState } from 'react';
 
 interface BarraTituloProps {
     nome?: string;
@@ -10,12 +11,13 @@ interface BarraTituloProps {
 }
 
 export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: BarraTituloProps){
+    const [baixaVisao, setBaixaVisao] = useState(false);
+    const navigate = useNavigate();
     const nomeExibido = nome || "";
     const tipoExibido = tipo || "";
     /*const emailExibido = email || "";
     const cpf_cnpjExibido = cpf_cnpj || "";
     const instituicaoExibido = instituicao || "";*/
-    const navigate = useNavigate();
     const handleLogout = () => {
         // Limpa dados do localStorage
         localStorage.removeItem("token");
@@ -25,25 +27,37 @@ export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: Ba
         navigate("/login");
     };
 
+    const toggleAcessibilidade = () => {
+        setBaixaVisao(!baixaVisao);
+    };
+
     return (
-        <div className="BarraTitulo">
+        /* 3. A classe dinâmica deve envolver o conteúdo que você quer mudar */
+        <div className={`BarraTitulo ${baixaVisao ? 'modo-baixa-visao' : ''}`}>
             <div className="Titulo">
-            Avaliações Disponíveis
+                Avaliações Disponíveis
             </div> 
+            
             <div className="Perfil">
-                <div className="Nome">
-                    {nomeExibido}
-                </div>
-                <div className="Tipo">
-                    {tipoExibido}
-                </div>
+                <div className="Nome">{nomeExibido}</div>
+                <div className="Tipo">{tipoExibido}</div>
             </div>
-            <div className="Logout">
-                <button onClick={handleLogout}>
-                    Sair
+
+            {/* Botão de Acessibilidade */}
+            <div className="Acessibilidade">
+                <button 
+                    onClick={toggleAcessibilidade}
+                    aria-pressed={baixaVisao}
+                    title="Alternar Contraste para Baixa Visão"
+                    className="botao-acessibilidade"
+                >
+                    {baixaVisao ? '🌑 Modo Normal' : '🟡 Alto Contraste'}
                 </button>
             </div>
-        </div>
-    )
 
+            <div className="Logout">
+                <button onClick={handleLogout}>Sair</button>
+            </div>
+        </div>
+    );
 }

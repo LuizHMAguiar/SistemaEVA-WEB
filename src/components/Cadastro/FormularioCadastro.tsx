@@ -18,6 +18,7 @@ export function FormularioCadastro(){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [confirmarSenha, setConfirmarSenha] = useState("");
+    const handleLogout = () => { navigate("/login");};
 
     const [instituicoes, setInstituicoes] = useState<Instituicao[]>();
     
@@ -152,9 +153,15 @@ export function FormularioCadastro(){
             </label>
             </div>
         </form>
+            <div className="botoes_funcionais">
+            <button onClick={handleLogout}>
+            Voltar
+            </button>
             <button onClick={() => validarCadastro()} >
             Cadastrar 
             </button>
+            </div>
         </div>
+        
     )
 }

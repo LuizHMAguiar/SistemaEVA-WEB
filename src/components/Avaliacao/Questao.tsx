@@ -26,8 +26,8 @@ export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, tipo, enun
         body: JSON.stringify({
                 cpf_aluno: cpf_aluno,
                 id_avaliacao: id_avaliacao,
-                id_questao: id_questao,          
-                resposta: resposta       
+                id_questao: id_questao,
+                resposta: resposta,
             })
         });
 
@@ -36,9 +36,7 @@ export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, tipo, enun
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
     }
-
             
-    
     return (
         <div className="Questao" id={id_questao}>
             <div className="Areaquestao">
