@@ -69,11 +69,11 @@ export function FormularioCadastro(){
     }
 
     return(
-        <div className="formulario">
+        <div className="formulario_cadastro">
 
         <h2>Cadastro de aluno</h2>
         <form>
-            <div className='campo_formulario' >
+            <div className='campo_formulario_cadastro' >
                 <label>
                     Instituição*
             
@@ -93,7 +93,7 @@ export function FormularioCadastro(){
                 </select>
                 </label>
             </div>
-            <div className='campo_formulario'>
+            <div className='campo_formulario_cadastro'>
                 <label>
                     Curso
                 <input onChange={(e) => setCurso(e.target.value)}
@@ -102,7 +102,7 @@ export function FormularioCadastro(){
                 </label>
             </div>
           
-            <div className='campo_formulario'>
+            <div className='campo_formulario_cadastro'>
                 <label>
                     Turma
 
@@ -112,7 +112,7 @@ export function FormularioCadastro(){
                 </label>
             </div>
             
-            <div className='campo_formulario'>
+            <div className='campo_formulario_cadastro'>
             <label>
                 <div>Nome Completo*</div>
                 <input placeholder='' onChange={(e) => setNome(e.target.value)}>
@@ -121,14 +121,14 @@ export function FormularioCadastro(){
             </div>
 
             
-            <div className='campo_formulario'>
+            <div className='campo_formulario_cadastro'>
             <label>
                 <div>Digite o CPF*</div>
                 <input placeholder='000.111.222-33' onChange={(e) => setCpf(e.target.value)}>
                 </input>
             </label>
             </div>
-            <div className='campo_formulario'>
+            <div className='campo_formulario_cadastro'>
             <label>
                 <div>E-mail*</div>
                 <input placeholder='' onChange={(e) => setEmail(e.target.value)}>
@@ -138,14 +138,14 @@ export function FormularioCadastro(){
 
 
             
-            <div className='campo_formulario'>
+            <div className='campo_formulario_cadastro'>
             <label>
                 <div>Digite a senha*</div>
                 <input placeholder='••••••••••••' type='password' onChange={(e) => setSenha(e.target.value)}>
                 </input>
             </label>
             </div>
-            <div className='campo_formulario'>
+            <div className='campo_formulario_cadastro'>
             <label>
                 <div>Confirmar senha*</div>
                 <input placeholder='••••••••••••' type='password' onChange={(e) => setConfirmarSenha(e.target.value)}>

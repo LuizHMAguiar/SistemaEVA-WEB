@@ -1,0 +1,140 @@
+.accessibility-panel {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  width: 52px;
+  min-width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 18px;
+  background: rgb(150, 171, 255);
+  color: #282828;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  font-size: 0.95rem;
+  overflow: hidden;
+  transition: width 0.24s ease, padding 0.24s ease, background-color 0.24s ease, border-color 0.24s ease;
+}
+
+.accessibility-panel:hover {
+  width: 250px;
+  padding: 0.95rem;
+}
+
+.accessibility-panel--light {
+  background: rgba(6, 9, 118, 0.96);
+  color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.accessibility-panel__handle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.accessibility-panel__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  font-size: 1.15rem;
+}
+
+.accessibility-panel__title {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.24s ease, transform 0.24s ease;
+  pointer-events: none;
+}
+
+.accessibility-panel__content {
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.24s ease, max-height 0.24s ease;
+}
+
+.accessibility-panel:hover .accessibility-panel__title {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.accessibility-panel:hover .accessibility-panel__content {
+  visibility: visible;
+  opacity: 1;
+  max-height: 500px;
+}
+
+.accessibility-panel:hover .accessibility-panel__button {
+  pointer-events: auto;
+}
+
+.accessibility-panel__controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.accessibility-panel__button {
+  flex: 1;
+  min-height: 2.4rem;
+  border: none;
+  border-radius: 12px;
+  padding: 0.72rem 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.16s ease, background-color 0.2s ease, color 0.2s ease;
+  font-weight: 600;
+}
+
+.accessibility-panel__button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.accessibility-panel__button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.accessibility-panel__button--theme {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.accessibility-panel__status {
+  width: 100%;
+  text-align: left;
+  font-size: 0.95rem;
+  opacity: 0.88;
+}
+
+@media (max-width: 520px) {
+  .accessibility-panel {
+    right: 0.5rem;
+    top: 0.5rem;
+    width: 48px;
+    min-width: 48px;
+  }
+
+  .accessibility-panel:hover {
+    width: 220px;
+  }
+}

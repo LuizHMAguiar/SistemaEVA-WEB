@@ -3,7 +3,7 @@
 .Conteudo {
   width: 100%;
   height: 100vh;
-  color: var(--cor4);
+  color: var(--text);
   position: fixed;
   top: 0;
   left: 0;
@@ -31,8 +31,8 @@ overflow-y: auto; /* Habilita a barra de rolagem interna */
   width: calc(30% - 0.5rem);
   min-width: 25rem;
   max-width: 35rem;
-  background-color: var(--cor5);
-  color: var(--cor4);
+  background-color: var(--surface);
+  color: var(--text);
   font-size: 30px;
   font-weight: bold;
   text-align: left;
@@ -80,7 +80,7 @@ overflow-y: auto; /* Habilita a barra de rolagem interna */
 
 .Botao {
   font-size: 20px;
-  color: var(--cor4);
+  color: var(--text_secondary);
   padding: 0.5rem;
   border-radius: 1rem;
   margin-left: 0;
@@ -95,7 +95,7 @@ overflow-y: auto; /* Habilita a barra de rolagem interna */
 
 .TipoAvaliacao {
   font-size: 14px;
-  color: var(--cor4);
+  color: var(--text_secondary);
   padding: 0.5rem;
   border-radius: 1rem;
 }
@@ -110,7 +110,7 @@ overflow-y: auto; /* Habilita a barra de rolagem interna */
 
 .Disciplina{
     font-size: 18px;
-    color: var(--cor4);
+    color: var(--text_secondary);
     padding: 0.5rem;
     margin: 1rem;
 }
@@ -119,8 +119,8 @@ overflow-y: auto; /* Habilita a barra de rolagem interna */
 
 /* Modal */
 .Modal {
-  background-color: var(--cor5);
-  color: var(--cor4);
+  background-color: var(--surface);
+  color: var(--text_secondary);
   padding: 2rem;
   position: fixed;
   top: 50%;
@@ -173,7 +173,7 @@ overflow-y: auto; /* Habilita a barra de rolagem interna */
 
 input{
   width: 50%;
-  background-color: var(--cor5);
+  background-color: var(--surface);
   color: var(--cor4);
   border: none;
   padding: 10px;

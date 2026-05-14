@@ -1,26 +1,16 @@
 
-.campo_formulario{
+.campo_formulario_login{
   align-items: left;
   text-align: left;
 
   label{
-    color:var(--cor4);
+    color:var(--text);
     width: 100%;
   }
   input{
     width: 100%;
-    background-color: var(--cor5);
-    color: var(--cor4);
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  select{ 
-    width:100%;
-    background-color: var(--cor5);
-    color: var(--cor4);
+    background-color: var(--background);
+    color: var(--text);
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -32,8 +22,8 @@
 .Logo{
   width: 300px;
 }
-.formulario{
-  background-color: var(--cor3);
+.formulario_login{
+  background-color: var(--surface);
   padding: 50px;
   border-radius: 20px;
 }

@@ -42,18 +42,18 @@ export function FormularioLogin(){
     }
 
     return(
-        <div className="formulario">
+        <div className="formulario_login">
         <img src={Logo} className="Logo"></img>
         
         <form>
-            <div className='campo_formulario'>
+            <div className='campo_formulario_login'>
             <label>
                 <div>Digite o CPF</div>
                 <input placeholder='000.111.222-33' onChange={(e) => setCpf(e.target.value)}>
                 </input>
             </label>
             </div>
-            <div className='campo_formulario'>
+            <div className='campo_formulario_login'>
             <label>
                 <div>Digite a senha</div>
                 <input placeholder='••••••••••••' type='password' onChange={(e) => setSenha(e.target.value)}>

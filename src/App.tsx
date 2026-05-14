@@ -1,19 +1,17 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
+import { AccessibilityPanel } from './components/Accessibility/AccessibilityPanel'
 import { FormularioLogin } from './components/Login/FormularioLogin.tsx'
 import { FormularioCadastro } from './components/Cadastro/FormularioCadastro.tsx'
 import { Dashboard } from './components/Dashboard/Dashboard.tsx'
 import { Avaliacao } from './components/Avaliacao/Avaliacao.tsx'
 
-
 function App() {
-
   return (
     <>
-
+      <AccessibilityPanel />
       <Router>
-
         <Routes>
           <Route path="/" element={<FormularioLogin />} />
           <Route path="/login" element={<FormularioLogin />} />

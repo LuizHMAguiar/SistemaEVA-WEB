@@ -1,6 +1,5 @@
 import "./BarraTitulo.css"
 import { useNavigate } from "react-router-dom"
-import React, { useState } from 'react';
 
 interface BarraTituloProps {
     nome?: string;
@@ -11,7 +10,7 @@ interface BarraTituloProps {
 }
 
 export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: BarraTituloProps){
-    const [baixaVisao, setBaixaVisao] = useState(false);
+
     const navigate = useNavigate();
     const nomeExibido = nome || "";
     const tipoExibido = tipo || "";
@@ -27,13 +26,11 @@ export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: Ba
         navigate("/login");
     };
 
-    const toggleAcessibilidade = () => {
-        setBaixaVisao(!baixaVisao);
-    };
+
 
     return (
         /* 3. A classe dinâmica deve envolver o conteúdo que você quer mudar */
-        <div className={`BarraTitulo ${baixaVisao ? 'modo-baixa-visao' : ''}`}>
+        <div className={`BarraTitulo `}>
             <div className="Titulo">
                 Avaliações Disponíveis
             </div> 
@@ -41,18 +38,6 @@ export function BarraTitulo({ nome, tipo, /*email, cpf_cnpj, instituicao*/ }: Ba
             <div className="Perfil">
                 <div className="Nome">{nomeExibido}</div>
                 <div className="Tipo">{tipoExibido}</div>
-            </div>
-
-            {/* Botão de Acessibilidade */}
-            <div className="Acessibilidade">
-                <button 
-                    onClick={toggleAcessibilidade}
-                    aria-pressed={baixaVisao}
-                    title="Alternar Contraste para Baixa Visão"
-                    className="botao-acessibilidade"
-                >
-                    {baixaVisao ? '🌑 Modo Normal' : '🟡 Alto Contraste'}
-                </button>
             </div>
 
             <div className="Logout">
