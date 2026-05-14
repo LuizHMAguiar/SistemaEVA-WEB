@@ -163,7 +163,6 @@ overflow-y: auto; /* Habilita a barra de rolagem interna */
   margin-bottom: 1em; 
 }
 
-/* campos de busca de avaliacao */
 .BuscarAvaliacoes {
   font-size: 20px;
   color: var(--cor4);
