@@ -14,7 +14,7 @@ interface QuestaoProps {
     opcao_e?: string;
 } 
 
-export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, tipo, enunciado, opcao_a, opcao_b, opcao_c, opcao_d, opcao_e }: QuestaoProps) {
+export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, enunciado, opcao_a, opcao_b, opcao_c, opcao_d, opcao_e }: QuestaoProps) {
     
     async function SalvarResposta(resposta: string){ 
         const resultado = await fetch("https://sistemaeva-api.onrender.com/questao/responder", { 

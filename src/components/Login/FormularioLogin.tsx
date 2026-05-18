@@ -64,9 +64,6 @@ export function FormularioLogin(){
             <button onClick={() => validarLogin()}>
             ENTRAR
             </button>
-            <p>
-            <Link to="/recuperar">Esqueceu a senha?</Link> 
-            </p>
         <p>
             <Link to="/cadastro">Cadastre-se aqui</Link>
         </p>
