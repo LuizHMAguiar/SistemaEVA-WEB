@@ -11,6 +11,8 @@ export function FormularioLogin(){
     const [cpf, setCpf] = useState("");
     const [senha, setSenha] = useState("");
 
+    
+
     async function validarLogin(){
         const resultado = await fetch("https://sistemaeva-api.onrender.com/login", { 
             method: 'POST',
@@ -67,6 +69,16 @@ export function FormularioLogin(){
         <p>
             <Link to="/cadastro">Cadastre-se aqui</Link>
         </p>
+
+        <p>{textoParaLer}</p>
+      
+        <button 
+            onClick={falar}
+            aria-label="Ouvir texto da tela"
+            style={{ padding: '10px 15px', cursor: 'pointer' }}
+        >
+            🔊 Ouvir Texto
+        </button>
 
         {logado?
             <Notificacao tipo="sucesso" titulo="Login" mensagem="Login realizado com sucesso"/>

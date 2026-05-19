@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./Questao.css";
 
 interface QuestaoProps {
@@ -35,7 +36,60 @@ export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, enunciado,
             alert("Erro ao salvar resposta da questao: " + id_questao);
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
+
+        // Cancela leituras anteriores que ainda estejam rodando
+        window.speechSynthesis.cancel();
+
+        // Cria a instância da mensagem
+        const utterance = new SpeechSynthesisUtterance("Resposta salva: " + resposta);
+        
+        // Define o idioma como Português do Brasil
+        utterance.lang = 'pt-BR'; 
+        
+        // Altera a velocidade se necessário (1 é o padrão)
+        utterance.rate = 1.0; 
+
+        // Executa a leitura
+        window.speechSynthesis.speak(utterance);
     }
+
+    // Monta o texto que será lido: enunciado + alternativas (com etiquetas)
+    const textoParaLer = [
+        id_questao ? `Questão número ${id_questao}` : null,
+        enunciado ? String(enunciado) : null,
+        opcao_a ? `Opção A: ${opcao_a}` : null,
+        opcao_b ? `Opção B: ${opcao_b}` : null,
+        opcao_c ? `Opção C: ${opcao_c}` : null,
+        opcao_d ? `Opção D: ${opcao_d}` : null,
+        opcao_e ? `Opção E: ${opcao_e}` : null,
+    ]
+    .filter(Boolean)
+    .join('. ');
+
+    const falar = () => {
+        // Cancela leituras anteriores que ainda estejam rodando
+        window.speechSynthesis.cancel();
+
+        // Cria a instância da mensagem
+        const utterance = new SpeechSynthesisUtterance(textoParaLer);
+        
+        // Define o idioma como Português do Brasil
+        utterance.lang = 'pt-BR'; 
+        
+        // Altera a velocidade se necessário (1 é o padrão)
+        utterance.rate = 1.0; 
+
+        // Executa a leitura
+        window.speechSynthesis.speak(utterance);
+    };
+
+    useEffect(() => {
+        if (!textoParaLer) return;
+        falar();
+        return () => window.speechSynthesis.cancel();
+    }, [textoParaLer]);
+
+    
             
     return (
         <div className="Questao" id={id_questao}>
