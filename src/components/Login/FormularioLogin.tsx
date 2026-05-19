@@ -70,16 +70,6 @@ export function FormularioLogin(){
             <Link to="/cadastro">Cadastre-se aqui</Link>
         </p>
 
-        <p>{textoParaLer}</p>
-      
-        <button 
-            onClick={falar}
-            aria-label="Ouvir texto da tela"
-            style={{ padding: '10px 15px', cursor: 'pointer' }}
-        >
-            🔊 Ouvir Texto
-        </button>
-
         {logado?
             <Notificacao tipo="sucesso" titulo="Login" mensagem="Login realizado com sucesso"/>
         :
