@@ -14,6 +14,7 @@ interface Avaliacao {
     tipo: string;
     titulo: string;
     turma: string;
+    status?: string;
 }
 
 interface ConteudoProps {
@@ -204,14 +205,27 @@ export function Conteudo(
                             {avaliacao.tempo}
                         </div>
                     </div>
+                    
+
                     <div className="Botao">
-                        <button onClick={() => {
-                            setAvaliacaoSelecionada(avaliacao);
-                            setMostraModal(true);
-                        }}>
-                            Iniciar Avaliação
+                        <button
+                            disabled={avaliacao.status === "inativa"}
+                            onClick={() => {
+
+                                if (avaliacao.status === "inativa") {
+                                    return;
+                                }
+
+                                setAvaliacaoSelecionada(avaliacao);
+                                setMostraModal(true);
+                            }}
+                        >
+                            {avaliacao.status === "inativa"
+                                ? "Fora do prazo"
+                                : "Iniciar Avaliação"}
                         </button>
                     </div>
+                  
                 </div>
             ))}
             
