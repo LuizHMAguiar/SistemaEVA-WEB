@@ -98,10 +98,27 @@ export function Avaliacao(){
         }
     }
 
-    function handleFinalizar(){
-        // Chamar a API para finalizar a avaliação
-    }
+    async function handleFinalizar(){
 
+        // Envia requisição POST para finalizar a avaliação
+        const resultado = await fetch(`https://sistemaeva-api.onrender.com/avaliacao/finalizar`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ id_avaliacao: id })
+        });
+
+        if (!resultado.ok) {
+            alert(`Erro ao finalizar a avaliação. Erro: ${resultado.status} - ${resultado.statusText}`);
+            throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
+        }
+
+        // Se precisar processar retorno, pode-se ler o JSON. Aqui apenas marca como finalizada.
+        setBuscaRealizada(true);
+        alert('Avaliação finalizada com sucesso.');
+    }
     return (
         <>
             <BarraNavegacao 

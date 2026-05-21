@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "./Questao.css";
 
 interface QuestaoProps {
@@ -18,6 +18,47 @@ interface QuestaoProps {
 
 export function Questao({ indiceAtual, id_questao, id_avaliacao, cpf_aluno, token, enunciado, opcao_a, opcao_b, opcao_c, opcao_d, opcao_e }: QuestaoProps) {
     
+    const recognitionRef = useRef<any>(null);
+
+    useEffect(() => {
+        const SpeechRecognition =
+            (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+        if (!SpeechRecognition) return;
+
+        recognitionRef.current = new SpeechRecognition();
+    }, []);
+    
+    function ouvirResposta() {
+        const recognition = recognitionRef.current;
+
+        if (!recognition) {
+            alert("Reconhecimento de voz não suportado.");
+            return;
+        }
+
+        recognition.lang = "pt-BR";
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        recognition.start();
+
+        recognition.onresult = (event: any) => {
+            const transcript = event.results[0][0].transcript.toLowerCase();
+
+            let resposta = "";
+
+            if (transcript.includes("a")) resposta = opcao_a || "A";
+            else if (transcript.includes("b")) resposta = opcao_b || "B";
+            else if (transcript.includes("c")) resposta = opcao_c || "C";
+            else if (transcript.includes("d")) resposta = opcao_d || "D";
+            else if (transcript.includes("e")) resposta = opcao_e || "E";
+            else return alert("Não entendi a resposta.");
+
+            SalvarResposta(resposta);
+        };
+    }
+
     async function SalvarResposta(resposta: string){ 
         const resultado = await fetch("https://sistemaeva-api.onrender.com/questao/responder", { 
             method: 'POST',
@@ -66,7 +107,7 @@ export function Questao({ indiceAtual, id_questao, id_avaliacao, cpf_aluno, toke
     ]
     .filter(Boolean)
     .join('. ');
-
+/*
     const falar = () => {
         // Cancela leituras anteriores que ainda estejam rodando
         window.speechSynthesis.cancel();
@@ -80,17 +121,36 @@ export function Questao({ indiceAtual, id_questao, id_avaliacao, cpf_aluno, toke
         // Altera a velocidade se necessário (1 é o padrão)
         utterance.rate = 1.0; 
 
+        utterance.onend = () => {
+            // começa a ouvir depois que termina de falar
+            ouvirResposta();
+        };
+
         // Executa a leitura
         window.speechSynthesis.speak(utterance);
     };
-
+*/
     useEffect(() => {
         if (!textoParaLer) return;
-        falar();
-        return () => window.speechSynthesis.cancel();
-    }, [textoParaLer]);
 
-    
+        const utterance = new SpeechSynthesisUtterance(textoParaLer);
+
+        utterance.lang = "pt-BR";
+        utterance.rate = 1.0;
+
+        utterance.onend = () => {
+            ouvirResposta();
+        };
+
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+
+        return () => {
+            window.speechSynthesis.cancel();
+            const recognition = recognitionRef.current;
+            if (recognition) recognition.abort();
+        };
+    }, [textoParaLer]);
             
     return (
         <div className="Questao" id={id_questao}>

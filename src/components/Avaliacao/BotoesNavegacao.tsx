@@ -6,7 +6,7 @@
   irParaAnterior: () => void;
   irParaProximo: () => void;
   finalizar: () => void;
-};
+}
 
 
 export function BotoesNavegacao({indiceAtual, totalQuestoes, irParaAnterior, irParaProximo, finalizar}: BotoesNavegacaoProps){
