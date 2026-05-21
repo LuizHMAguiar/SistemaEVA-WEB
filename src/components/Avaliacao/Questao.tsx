@@ -3,6 +3,7 @@ import "./Questao.css";
 
 interface QuestaoProps {
     id_questao?: string;
+    indiceAtual?: number;
     id_avaliacao?: string;
     cpf_aluno?: string;
     token?:string;
@@ -15,7 +16,7 @@ interface QuestaoProps {
     opcao_e?: string;
 } 
 
-export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, enunciado, opcao_a, opcao_b, opcao_c, opcao_d, opcao_e }: QuestaoProps) {
+export function Questao({ indiceAtual, id_questao, id_avaliacao, cpf_aluno, token, enunciado, opcao_a, opcao_b, opcao_c, opcao_d, opcao_e }: QuestaoProps) {
     
     async function SalvarResposta(resposta: string){ 
         const resultado = await fetch("https://sistemaeva-api.onrender.com/questao/responder", { 
@@ -33,7 +34,7 @@ export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, enunciado,
         });
 
         if (!resultado.ok) {
-            alert("Erro ao salvar resposta da questao: " + id_questao);
+            alert("Erro ao salvar resposta da questao: " + indiceAtual);
             throw new Error(`Erro: ${resultado.status} - ${resultado.statusText}`);
         }
 
@@ -55,7 +56,7 @@ export function Questao({ id_questao, id_avaliacao, cpf_aluno, token, enunciado,
 
     // Monta o texto que será lido: enunciado + alternativas (com etiquetas)
     const textoParaLer = [
-        id_questao ? `Questão número ${id_questao}` : null,
+        indiceAtual !== undefined ? `Questão número ${indiceAtual + 1}` : null,
         enunciado ? String(enunciado) : null,
         opcao_a ? `Opção A: ${opcao_a}` : null,
         opcao_b ? `Opção B: ${opcao_b}` : null,

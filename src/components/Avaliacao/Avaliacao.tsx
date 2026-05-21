@@ -114,6 +114,7 @@ export function Avaliacao(){
                 cpf_aluno={cpf_aluno}
                 token={token}
                 id_avaliacao={id}
+                indiceAtual={questoes?.findIndex(q => q.id === questaoAtual?.id) || 0}
                 id_questao={questaoAtual?.id} 
                 tipo={questaoAtual?.tipo} 
                 enunciado={questaoAtual?.enunciado} 
