@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom";
 import { BotoesNavegacao } from "./BotoesNavegacao"
 import { BarraNavegacao } from "./BarraNavegacao"
 import { Questao } from "./Questao"
@@ -37,6 +37,7 @@ interface Questao {
 
 export function Avaliacao(){
     const location = useLocation();
+    const navigate = useNavigate();
     const locationState = location.state as AvaliacaoState | null;
     const storageUser = JSON.parse(localStorage.getItem("usuario") || "{}") as AvaliacaoState;
     const token = locationState?.token || storageUser?.token || "";
@@ -107,7 +108,7 @@ export function Avaliacao(){
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ id_avaliacao: id })
+            body: JSON.stringify({ id_avaliacao: id , cpf_aluno: cpf_aluno })
         });
 
         if (!resultado.ok) {
@@ -118,6 +119,7 @@ export function Avaliacao(){
         // Se precisar processar retorno, pode-se ler o JSON. Aqui apenas marca como finalizada.
         setBuscaRealizada(true);
         alert('Avaliação finalizada com sucesso.');
+        navigate("/dashboard");
     }
     return (
         <>

@@ -53,6 +53,7 @@ export function Conteudo(
     const storageUser = JSON.parse(localStorage.getItem("usuario") || "{}") as UsuarioState;
     const token = locationState?.token || storageUser?.token || "";
     const [mostraModal,setMostraModal] = useState(false);
+    const [mostraModalRespondida, setMostraModalRespondida] = useState(false);
     const [buscouAvaliacoes,setBuscouAvaliacoes] = useState(false);
     const [avaliacoesAtivas, setAvaliacoesAtivas] = useState<Avaliacao[]>();
     const [avaliacaoSelecionada, setAvaliacaoSelecionada] = useState<Avaliacao | null>(null);
@@ -228,6 +229,9 @@ export function Conteudo(
                   
                 </div>
             ))}
+
+
+            
             
             </div>
         </div>
